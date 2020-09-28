@@ -1,0 +1,38 @@
+{
+  "EnvironmentSettings": [
+    {
+      "id": "1",
+      "apiUrl": "https://apiname.azure-api.net/chronos/import",
+      "apiSubscriptionKeyValue": "<<API-KEY>>",
+      "apiSubscriptionKeyName": "Ocp-Apim-Subscription-Key",
+      "baseUrl": "https://ENVIRONMENTID.cloudax.dynamics.com",
+      "clientId": "<<client-id>>",
+      "clientSecret": "<<client-secret>>",
+      "legalEntityId": "LE01",
+      "tenant": "something.com",
+      "isEnabled": true
+    }
+  ],
+  "CreateDataPackageSettings": [
+    {
+      "DefinitionGroupId": "RemittanceImport",
+      "SourceFolder": "D:\\To-FinOps\\Remittance\\Source",
+      "TemplateFolder": "D:\\To-FinOps\\Remittance\\Template",
+      "DestinationFolder": "D:\\To-FinOps\\Remittance\\Destination",
+      "XsltFileName": "D:\\To-FinOps\\Remittance\\Transform\\Remittance.xslt",
+      "DataFileName": "CompositeEntity.xml",
+      "Schedule": "*/5 * * * *",
+      "isEnabled": true
+    }
+  ],
+  "UploadDataPackageSettings": [
+    {
+      "EnvironmentId": "1",
+      "DefinitionGroupId": "RemittanceImport",
+      "SourceFolder": "D:\\To-FinOps\\Remittance\\Destination",
+      "SentFolder": "D:\\To-FinOps\\Remittance\\Sent",
+      "Schedule": "*/7 * * * *",
+      "isEnabled": true
+    }
+  ]
+}
