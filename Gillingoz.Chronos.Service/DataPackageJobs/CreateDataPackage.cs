@@ -51,7 +51,7 @@ namespace Gillingoz.Chronos.Service
             string template,
             string target,
             string data,
-            string xsltFileName,
+            string[] xsltFiles,
             string definitionGroupId)
         {
             LogInfo(context, $"Checking folders for {definitionGroupId}");
@@ -60,26 +60,29 @@ namespace Gillingoz.Chronos.Service
             foreach (var item in getFolderInFiles)
             {
                 LogInfo(context, $"Processing file: {item}");
+                var sourceItem = $"{item}";
                 // We need conversion if there is XSLT exist.
-                if (!string.IsNullOrEmpty(xsltFileName))
+                foreach (var xsltFileName in xsltFiles)
                 {
                     // Transform the data file using xslt
                     LogDebug(context, $"Converting file into XML using {xsltFileName}");
-                    Transform(context, item, $"{template}\\{data}", xsltFileName);
+                    Transform(context, sourceItem, $"{template}\\{data}", xsltFileName);
                     LogInfo(context, $"File converted into xml");
+
+                    // after initial XSLT runs, we need to run sequential XSLTS against to file generated as a result of first
+                    sourceItem = $"{template}\\{data}";
                 }
-                else
-                {
-                    // Move data file to template folder and overwrite if exists
-                    LogDebug(context, $"Moving {item} to {Path.Combine(template, data)}");
-                    MoveFileToFolder(context, item, Path.Combine(template, data));
-                    LogInfo(context, $"File converted into xml");
-                }
+                // Move data file to template folder and overwrite if exists
+                LogDebug(context, $"Moving {item} to {Path.Combine(template, data)}");
+                MoveFileToFolder(context, item, Path.Combine(template, data));
+                LogInfo(context, $"File converted into xml");
+
                 FileToZip(template, target, definitionGroupId);
                 File.Delete(item);
                 LogInfo(context, $"Processing file: {item} completed");
             }
         }
+
         private void Transform(
             PerformContext context,
             string source,

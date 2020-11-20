@@ -19,8 +19,21 @@
       "SourceFolder": "D:\\To-FinOps\\Remittance\\Source",
       "TemplateFolder": "D:\\To-FinOps\\Remittance\\Template",
       "DestinationFolder": "D:\\To-FinOps\\Remittance\\Destination",
-      "XsltFileName": "D:\\To-FinOps\\Remittance\\Transform\\Remittance.xslt",
+      "XsltFileName": 
+      [
+        "D:\\To-FinOps\\Remittance\\Transform\\Remittance.xslt"
+      ],
       "DataFileName": "CompositeEntity.xml",
+      "Schedule": "*/5 * * * *",
+      "isEnabled": true
+    }
+  ],
+  "DownloadDataPackageSettings": [
+    {
+      "DefinitionGroupId": "RemittanceExport",
+      "SourceFolder": "D:\\From-FinOps\\Remittance\\Source",
+      "DestinationFolder": "D:\\\\From-FinOps\\\\Remittance\\Destination",
+      "DataFileName": "DataFileName.xlsx",
       "Schedule": "*/5 * * * *",
       "isEnabled": true
     }
