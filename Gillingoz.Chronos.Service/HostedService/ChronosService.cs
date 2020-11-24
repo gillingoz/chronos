@@ -22,6 +22,7 @@ namespace Gillingoz.Chronos.Service
             try
             {
                 CreateDataPackage createDataPackage = new CreateDataPackage(configuration, recurringJobs);
+                ExtractDataPackage extractDataPackage = new ExtractDataPackage(configuration, recurringJobs);
                 UploadDataPackage uploadDataPackage = new UploadDataPackage(configuration, recurringJobs);
             }
             catch (Exception e)

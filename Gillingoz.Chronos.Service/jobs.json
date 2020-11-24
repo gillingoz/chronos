@@ -15,16 +15,33 @@
   ],
   "CreateDataPackageSettings": [
     {
-      "DefinitionGroupId": "RemittanceImport",
-      "SourceFolder": "D:\\To-FinOps\\Remittance\\Source",
-      "TemplateFolder": "D:\\To-FinOps\\Remittance\\Template",
-      "DestinationFolder": "D:\\To-FinOps\\Remittance\\Destination",
-      "XsltFileName": 
-      [
-        "D:\\To-FinOps\\Remittance\\Transform\\Remittance.xslt"
+      "JobId": "ADDACS",
+      "DefinitionGroupId": "SITADDACS",
+      "SourceFolder": "c:\\To-FinOps\\SITADDACS\\Source",
+      "TemplateFolder": "c:\\To-FinOps\\SITADDACS\\Template",
+      "DestinationFolder": "c:\\To-FinOps\\SITADDACS\\Destination",
+      "XsltFileName": [
+        "c:\\To-FinOps\\SITADDACS\\Transform\\ADDACSXSLT.xsl",
+        "c:\\To-FinOps\\SITADDACS\\Transform\\ADDACSXSLT2.xsl"
       ],
-      "DataFileName": "CompositeEntity.xml",
-      "Schedule": "*/5 * * * *",
+      "DataFileName": "ADDACSCompositeEntity.xml",
+      "ArchieveFolder": "c:\\To-FinOps\\SITADDACS\\ArchieveFolder",
+      "Schedule": "*/1 * * * *",
+      "isEnabled": true
+    }
+  ],
+  "ExtractDataPackageSettings": [
+    {
+      "JobId": "ADDACS-EXTRACT",
+      "DefinitionGroupId": "SITADDACS",
+      "SourceFolder": "c:\\From-FinOps\\SITADDACS\\Source",
+      "DestinationFolder": "c:\\From-FinOps\\SITADDACS\\Destination",
+      "TempFolder": "c:\\From-FinOps\\SITADDACS\\Temp",
+      "ArchieveFolder": "c:\\From-FinOps\\SITADDACS\\ArchieveFolder",
+      "DataFileName": [
+        "ADDACSCompositeEntity.xml"
+      ],
+      "Schedule": "*/1 * * * *",
       "isEnabled": true
     }
   ],

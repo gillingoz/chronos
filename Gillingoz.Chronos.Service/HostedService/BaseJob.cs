@@ -57,6 +57,20 @@ namespace Gillingoz.Chronos.Service
             }
             return retVal;
         }
+
+        protected bool IsNullOrEmpty(
+            PerformContext context,
+            string fieldName,
+            string[] fieldValue)
+        {
+            bool retVal = fieldValue == null;
+            if (retVal)
+            {
+                LogError(context, $"Please check {fieldName} parameter is null or empty.");
+            }
+            return retVal;
+        }
+
         protected bool DirectoryExists(
             PerformContext context,
             string folderName,

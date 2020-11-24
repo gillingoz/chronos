@@ -70,7 +70,8 @@ namespace Gillingoz.Chronos.Service
                     LogInfo(context, $"File converted into xml");
 
                     // after initial XSLT runs, we need to run sequential XSLTS against to file generated as a result of first
-                    sourceItem = $"{template}\\{data}";
+                    File.Copy($"{template}\\{data}", sourceItem, true);
+                    //sourceItem = $"{template}\\{data}";
                 }
                 // Move data file to template folder and overwrite if exists
                 LogDebug(context, $"Moving {item} to {Path.Combine(template, data)}");
