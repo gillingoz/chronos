@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
     - name: Publish      
-      run: dotnet publish --configuration $(BuildConfiguration) -r win-x64 --self-contained true --output $(build.artifactstagingdirectory)
+      run: dotnet publish -r win-x64 --self-contained true
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2.2.1
       with:
